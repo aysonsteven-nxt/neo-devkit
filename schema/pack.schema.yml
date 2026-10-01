@@ -1,0 +1,35 @@
+schemaVersion: 1
+type: object
+required:
+  - id
+  - name
+  - version
+  - provides
+properties:
+  id:
+    type: string
+  name:
+    type: string
+  version:
+    type: string
+  description:
+    type: string
+  detect:
+    type: object
+  provides:
+    type: object
+    properties:
+      agents:
+        type: array
+      skills:
+        type: array
+      instructions:
+        type: array
+      prompts:
+        type: array
+  dependencies:
+    type: array
+  recommends:
+    type: array
+  conflicts:
+    type: array

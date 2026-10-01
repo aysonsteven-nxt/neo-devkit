@@ -1,0 +1,15 @@
+id: project-manager
+name: Project Manager
+version: 1.0.0
+description: Requirements, scope, business rules, project documentation, assumptions and open questions.
+
+provides:
+  agents:
+    - project-manager\n  skills:
+    - requirements-analysis\n  instructions:
+    - common-documentation\n  prompts: []
+
+dependencies:
+  []\nrecommends:
+  - solutions-architect\nconflicts:
+  []\n

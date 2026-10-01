@@ -1,0 +1,13 @@
+schemaVersion: 1
+type: object
+required:
+  - name
+  - toolkit
+  - paths
+properties:
+  name:
+    type: string
+  toolkit:
+    type: object
+  paths:
+    type: object

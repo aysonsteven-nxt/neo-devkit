@@ -1,0 +1,29 @@
+schemaVersion: 1
+type: object
+required:
+  - id
+  - type
+  - content
+  - source
+  - status
+properties:
+  id:
+    type: string
+  type:
+    type: string
+  content:
+    type: string
+  source:
+    type: object
+    required:
+      - type
+  status:
+    type: string
+    enum:
+      - authoritative
+      - confirmed
+      - inferred
+      - assumption
+      - deprecated
+  confidence:
+    type: string

@@ -1,0 +1,17 @@
+schemaVersion: 1
+packs:
+  - id: project-manager
+    version: 1.0.0
+    path: packs/project-manager
+
+  - id: solutions-architect
+    version: 1.0.0
+    path: packs/solutions-architect
+
+  - id: android-kotlin-dev
+    version: 1.0.0
+    path: packs/android-kotlin-dev
+
+  - id: java-dev
+    version: 1.0.0
+    path: packs/java-dev

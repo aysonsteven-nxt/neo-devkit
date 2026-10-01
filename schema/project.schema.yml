@@ -1,0 +1,17 @@
+schemaVersion: 1
+type: object
+required:
+  - name
+  - devkit
+  - packs
+properties:
+  name:
+    type: string
+  type:
+    type: string
+  devkit:
+    type: object
+    required:
+      - version
+  packs:
+    type: array

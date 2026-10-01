@@ -1,0 +1,10 @@
+schemaVersion: 1
+name: ai-workspace
+toolkit:
+  id: neo-devkit
+  version: 0.1.0
+
+paths:
+  toolkit: toolkit/neo-devkit
+  documentation: documentations
+  projects: projects

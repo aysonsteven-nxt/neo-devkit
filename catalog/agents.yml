@@ -1,0 +1,12 @@
+schemaVersion: 1
+agents:
+  - id: project-manager
+    path: agents/project-manager
+  - id: solutions-architect
+    path: agents/solutions-architect
+  - id: android-developer
+    path: agents/android-developer
+  - id: java-developer
+    path: agents/java-developer
+  - id: code-reviewer
+    path: agents/code-reviewer

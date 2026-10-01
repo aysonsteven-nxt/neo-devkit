@@ -1,0 +1,14 @@
+schemaVersion: 1
+id: none
+title: No active task
+status: idle
+objective: ""
+current_phase: ""
+completed: []
+in_progress: []
+next: []
+blocked: []
+active_files: []
+last_agent:
+  provider: ""
+  role: ""

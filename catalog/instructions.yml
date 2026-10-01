@@ -1,0 +1,12 @@
+schemaVersion: 1
+instructions:
+  - id: common-documentation
+    path: instructions/common-documentation
+  - id: android-standards
+    path: instructions/android-standards
+  - id: kotlin-standards
+    path: instructions/kotlin-standards
+  - id: java-standards
+    path: instructions/java-standards
+  - id: architecture-standards
+    path: instructions/architecture-standards

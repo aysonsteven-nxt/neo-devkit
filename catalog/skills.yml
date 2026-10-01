@@ -1,0 +1,12 @@
+schemaVersion: 1
+skills:
+  - id: requirements-analysis
+    path: skills/requirements-analysis
+  - id: architecture-design
+    path: skills/architecture-design
+  - id: android-development
+    path: skills/android-development
+  - id: java-development
+    path: skills/java-development
+  - id: code-review
+    path: skills/code-review

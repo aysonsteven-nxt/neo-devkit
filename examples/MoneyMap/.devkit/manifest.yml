@@ -1,0 +1,9 @@
+schemaVersion: 1
+name: MoneyMap
+type: android
+
+devkit:
+  version: 0.1.0
+
+packs:
+  - android-kotlin-dev
