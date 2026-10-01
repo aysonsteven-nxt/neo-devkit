@@ -9,3 +9,15 @@ provides:
   - scope-management
   - acceptance-criteria
   - project-documentation
+selector:
+  always: 15
+  signals:
+    - id: project-management
+      weight: 55
+      reason: Repository/project work was detected.
+    - id: source-code
+      weight: 25
+      reason: Source code was detected.
+    - id: documentation
+      weight: 20
+      reason: Documentation files were detected.

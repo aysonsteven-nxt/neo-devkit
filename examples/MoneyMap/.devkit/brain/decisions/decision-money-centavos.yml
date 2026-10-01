@@ -1,0 +1,11 @@
+schema: neo.devkit/brain-entry@1
+id: decision-money-centavos
+type: decision
+title: Monetary representation
+content: Monetary values are represented using integer centavos.
+source:
+  type: user
+status: active
+confidence: authoritative
+created: 2026-10-02T00:00:00.000Z
+updated: 2026-10-02T00:00:00.000Z

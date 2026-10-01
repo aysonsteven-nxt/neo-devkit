@@ -1,0 +1,11 @@
+schema: neo.devkit/brain-entry@1
+id: fact-offline-first
+type: fact
+title: Offline-first requirement
+content: The application is designed to work offline-first.
+source:
+  type: user
+status: active
+confidence: authoritative
+created: 2026-10-02T00:00:00.000Z
+updated: 2026-10-02T00:00:00.000Z

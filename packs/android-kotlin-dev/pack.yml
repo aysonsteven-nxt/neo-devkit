@@ -11,3 +11,24 @@ provides:
   - jetpack-compose
   - android-architecture
   - android-testing
+selector:
+  always: 0
+  signals:
+    - id: android
+      weight: 65
+      reason: Android project markers were detected.
+    - id: kotlin
+      weight: 35
+      reason: Kotlin source/build markers were detected.
+    - id: compose
+      weight: 20
+      reason: Jetpack Compose markers were detected.
+    - id: gradle
+      weight: 15
+      reason: Gradle build configuration was detected.
+    - id: room
+      weight: 10
+      reason: Room persistence markers were detected.
+    - id: hilt
+      weight: 10
+      reason: Hilt dependency-injection markers were detected.

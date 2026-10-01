@@ -1,0 +1,11 @@
+schema: neo.devkit/brain-entry@1
+required:
+  - id
+  - type
+  - title
+  - content
+  - source
+  - status
+  - confidence
+  - created
+  - updated

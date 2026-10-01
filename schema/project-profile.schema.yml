@@ -1,0 +1,11 @@
+schema: neo.devkit/project-profile@1
+required:
+  - path
+  - files
+  - signals
+  - technologies
+fields:
+  path: string
+  files: object
+  signals: object
+  technologies: string[]

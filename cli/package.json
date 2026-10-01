@@ -1,6 +1,6 @@
 {
   "name": "@neoquantumlabs/neo-devkit",
-  "version": "0.2.0",
+  "version": "0.4.0",
   "private": true,
   "description": "Neo DevKit local-first AI engineering toolkit",
   "type": "module",

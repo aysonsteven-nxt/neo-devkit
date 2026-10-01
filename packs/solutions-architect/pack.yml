@@ -11,3 +11,21 @@ provides:
   - data-architecture
   - integration-architecture
   - architecture-decisions
+selector:
+  always: 10
+  signals:
+    - id: multi-layer
+      weight: 45
+      reason: Multiple application layers/components were detected.
+    - id: api
+      weight: 25
+      reason: API or HTTP integration signals were detected.
+    - id: database
+      weight: 20
+      reason: Persistence/database signals were detected.
+    - id: architecture
+      weight: 25
+      reason: Architecture-pattern signals were detected.
+    - id: deployment
+      weight: 15
+      reason: Deployment/infrastructure configuration was detected.

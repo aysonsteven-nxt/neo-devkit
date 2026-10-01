@@ -1,29 +1,11 @@
-schemaVersion: 1
-type: object
-required:
-  - id
-  - type
-  - content
-  - source
-  - status
-properties:
-  id:
-    type: string
-  type:
-    type: string
-  content:
-    type: string
-  source:
-    type: object
-    required:
-      - type
-  status:
-    type: string
-    enum:
-      - authoritative
-      - confirmed
-      - inferred
-      - assumption
-      - deprecated
-  confidence:
-    type: string
+schema: neo.devkit/brain@1
+directories:
+  - project
+  - architecture
+  - knowledge
+  - decisions
+  - work
+  - sessions
+  - handoff
+statuses: [active, deprecated, superseded, draft]
+confidence: [authoritative, confirmed, inferred, assumption]

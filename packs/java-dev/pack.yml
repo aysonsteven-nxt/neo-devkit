@@ -10,3 +10,21 @@ provides:
   - java-se
   - spring-boot
   - java-testing
+selector:
+  always: 0
+  signals:
+    - id: java
+      weight: 60
+      reason: Java source/build markers were detected.
+    - id: spring
+      weight: 30
+      reason: Spring/Spring Boot markers were detected.
+    - id: maven
+      weight: 15
+      reason: Maven build configuration was detected.
+    - id: gradle-java
+      weight: 10
+      reason: Java + Gradle markers were detected.
+    - id: rest
+      weight: 15
+      reason: REST/API markers were detected.
