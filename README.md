@@ -1,54 +1,33 @@
-# Neo DevKit
+# Neo DevKit v0.5.0
 
-It provides:
+Local-first, provider-neutral AI engineering toolkit.
 
-- Project-aware development packs
-- Pack selection and installation
-- Agents, skills, instructions, and prompts
-- Persistent project context through DevKit Brain
-- Context-aware handoff and resume
-- Provider adapters for GitHub Copilot, Gemini/Antigravity, Claude Code, and Cursor
-
-The master toolkit can live in a workspace:
-
-```text
-AI-WORKSPACE/
-├── toolkit/
-│   └── neo-devkit/
-├── documentations/
-├── projects/
-│   └── MyProject/
-└── workspace.yml
-```
-A managed project contains its own `.devkit/` state.
-
-## Status
-This archive is the initial V0.1 framework skeleton and reference implementation. It focuses on the contracts, local pack system, Brain model, and provider-neutral structure.
-
-See `ARCHITECTURE.md` for the design specification.
-
-## V0.4 DevKit Brain
-
-The Brain stores persistent project intelligence in `.devkit/brain/`.
-
-New commands:
+## Provider adapters
 
 ```bash
-neo brain init
-neo brain status
-neo brain add decision "Money representation" "Monetary values are represented using integer centavos."
-neo brain list
-neo brain search money
-neo brain context
-neo brain context --json
+neo provider list
+neo provider status
+neo provider generate
+neo provider generate copilot
+neo provider generate antigravity
+neo provider generate claude-code
+neo provider generate cursor
 ```
 
-Entries preserve provenance and confidence so AI inference does not silently become authoritative project truth.
+Canonical source remains inside `.devkit/`. Provider files are generated artifacts.
 
+Supported targets:
 
-```bash
-neo analyze
-neo pack recommend
-```
+| Provider | Generated artifacts |
+|---|---|
+| GitHub Copilot | `.github/copilot-instructions.md`, `.github/agents/` |
+| Gemini / Antigravity | `.gemini/neo-devkit-instructions.md`, `.gemini/agents/` |
+| Claude Code | `CLAUDE.md`, `.claude/agents/` |
+| Cursor | `.cursor/rules/neo-devkit.mdc`, `.cursor/agents/` |
 
-Requirements: Node.js 20+, npm 10+.
+Previous milestones:
+- V0.2 Core Engine
+- V0.3 Pack Selector
+- V0.4 DevKit Brain
+
+Next: V0.6 Handoff / Resume.

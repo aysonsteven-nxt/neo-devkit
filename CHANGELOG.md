@@ -1,21 +1,28 @@
 # Changelog
 
-## 0.4.0
+## 0.5.0
 
 ### Added
-- DevKit Brain storage model.
-- Brain initialization and status.
-- Structured Brain entries with provenance, confidence, and status.
-- Brain listing and search.
-- Deterministic project context generation.
-- JSON output for Brain status/list/context.
-- Brain schemas and documentation.
+- Provider adapter layer.
+- Copilot adapter.
+- Gemini / Antigravity adapter.
+- Claude Code adapter.
+- Cursor adapter.
+- `neo provider list`.
+- `neo provider status`.
+- `neo provider generate [provider]`.
+- Deterministic provider artifact generation.
+- Provider generation schema and documentation.
 
-### Design
-- Brain is structured project intelligence, not a chat transcript.
-- User-created entries default to authoritative.
-- AI/inferred information can be retained without silently becoming project truth.
-- Brain remains local-first and Git-friendly.
+### Principle
+Canonical Neo DevKit definitions remain provider-neutral. Generated provider files
+are derived artifacts and can be regenerated.
+
+## 0.4.0
+DevKit Brain.
 
 ## 0.3.0
-Pack Selector and project analysis.
+Pack Selector.
+
+## 0.2.0
+Core Engine.

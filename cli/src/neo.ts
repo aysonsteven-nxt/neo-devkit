@@ -4,10 +4,11 @@ import path from "node:path";
 import os from "node:os";
 import { fileURLToPath } from "node:url";
 import yaml from "js-yaml";
+import { generateProviderArtifacts, supportedProviders } from "./provider-adapters.js";
 
 type AnyMap = Record<string, any>;
 
-const VERSION = "0.4.0"
+const VERSION = "0.5.0"
 const TOOLKIT_ENV = "NEO_DEVKIT_HOME";
 
 function die(message: string): never {
@@ -226,10 +227,11 @@ function generateCopilot(projectDir: string, installed: string[], toolkit: strin
 
 function generateProviders(projectDir: string, manifest: AnyMap, toolkit: string) {
   const installed: string[] = manifest.devkit?.packs ?? [];
-  generateCopilot(projectDir, installed, toolkit);
-  const generated = new Set<string>(manifest.providers?.generated ?? []);
-  generated.add("copilot");
-  manifest.providers = { ...(manifest.providers ?? {}), generated: [...generated].sort() };
+  generateProviderArtifacts(projectDir, installed);
+  manifest.providers = {
+    ...(manifest.providers ?? {}),
+    generated: supportedProviders()
+  };
 }
 
 function installPack(projectDir: string, id: string, toolkit: string) {
@@ -541,6 +543,46 @@ function brainList(projectDir:string,jsonOutput=false){const es=listBrainEntries
 function brainSearch(projectDir:string,q:string,jsonOutput=false){const query=q.toLowerCase().trim();if(!query)die("Search query cannot be empty.");const es=listBrainEntries(projectDir).filter(e=>`${e.title}\n${e.content}\n${e.type}`.toLowerCase().includes(query));if(jsonOutput){console.log(JSON.stringify(es,null,2));return;}if(!es.length){info(`No Brain entries matched: ${q}`);return;}for(const e of es)console.log(`\n${e.id}\n  [${e.type}] ${e.title}\n  ${e.content}`);}
 function brainContext(projectDir:string,jsonOutput=false){ensureProject(projectDir);const es=listBrainEntries(projectDir),m=readManifest(projectDir),packs:string[]=m.devkit?.packs??[];const active=es.filter(e=>e.status==="active");const r={schema:"neo.devkit/context@1",generated:new Date().toISOString(),project:m.project??{},installedPacks:packs,brain:{authoritative:active.filter(e=>e.confidence==="authoritative"),confirmed:active.filter(e=>e.confidence==="confirmed"),inferred:active.filter(e=>["inferred","assumption"].includes(e.confidence))}};if(jsonOutput)console.log(JSON.stringify(r,null,2));else{console.log(`# Neo DevKit Context\n\nProject: ${r.project.name??"Unknown"}\nInstalled packs: ${packs.join(", ")||"none"}\n");for(const [group,items] of Object.entries(r.brain)){console.log(`## ${group}`);for(const e of items as BrainEntry[])console.log(`- **${e.title}** (${e.type}) — ${e.content}`);console.log("");}}}
 
+function providerStatus(projectDir: string, jsonOutput = false) {
+  ensureProject(projectDir);
+  const targets: Record<string, string> = {
+    copilot: ".github/copilot-instructions.md",
+    antigravity: ".gemini/neo-devkit-instructions.md",
+    "claude-code": "CLAUDE.md",
+    cursor: ".cursor/rules/neo-devkit.mdc"
+  };
+  const result = Object.entries(targets).map(([id, rel]) => ({
+    id,
+    path: path.join(projectDir, rel),
+    generated: fs.existsSync(path.join(projectDir, rel))
+  }));
+  if (jsonOutput) {
+    console.log(JSON.stringify(result, null, 2));
+    return;
+  }
+  console.log("Provider Artifacts");
+  console.log("────────────────────────────────");
+  for (const x of result) console.log(`  ${x.generated ? "✓" : "✗"} ${x.id}`);
+}
+
+function providerGenerate(projectDir: string, provider?: string) {
+  ensureProject(projectDir);
+  const manifest = readManifest(projectDir);
+  const installed: string[] = manifest.devkit?.packs ?? [];
+  try {
+    generateProviderArtifacts(projectDir, installed, provider);
+  } catch (e: any) {
+    die(e?.message ?? String(e));
+  }
+  manifest.providers = {
+    ...(manifest.providers ?? {}),
+    generated: provider ? [provider] : supportedProviders()
+  };
+  writeManifest(projectDir, manifest);
+  success(`Generated provider artifacts: ${provider ?? "all providers"}`);
+}
+
+
 function main() {
   const args = process.argv.slice(2);
   const command = args.shift();
@@ -566,6 +608,9 @@ Usage:
   neo brain list [--json]
   neo brain search <query> [--json]
   neo brain context [--json]
+  neo provider list
+  neo provider status [--json]
+  neo provider generate [provider]
   neo status
 `);
     return;
@@ -631,6 +676,30 @@ Usage:
       addBrainEntry(project,type,title,content,source,confidence,status); return;
     }
     die(`Unknown brain command: ${sub}`);
+  }
+
+
+  if (command === "provider") {
+    const sub = args.shift();
+    const project = findProject() ?? die("No Neo DevKit project found.");
+
+    if (sub === "status") {
+      providerStatus(project, args.includes("--json"));
+      return;
+    }
+
+    if (sub === "generate") {
+      const provider = args.find(a => !a.startsWith("--"));
+      providerGenerate(project, provider);
+      return;
+    }
+
+    if (sub === "list") {
+      for (const id of supportedProviders()) console.log(id);
+      return;
+    }
+
+    die(`Unknown provider command: ${sub}`);
   }
 
   if (command === "analyze") {

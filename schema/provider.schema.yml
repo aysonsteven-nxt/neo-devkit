@@ -1,0 +1,11 @@
+schema: neo.devkit/provider@1
+required:
+  - id
+  - name
+  - instructions
+  - agents
+fields:
+  id: string
+  name: string
+  instructions: string
+  agents: string
