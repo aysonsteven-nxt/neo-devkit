@@ -1,15 +1,13 @@
 id: solutions-architect
 name: Solutions Architect
 version: 1.0.0
-description: System and solution architecture, technical boundaries, APIs, data, security, deployment and ADRs.
-
-provides:
-  agents:
-    - solutions-architect\n  skills:
-    - architecture-design\n  instructions:
-    - architecture-standards\n  prompts: []
-
+description: System, component, API, data, integration, security, deployment, scalability, and reliability architecture.
 dependencies:
-  []\nrecommends:
-  - testing-specialist\nconflicts:
-  []\n
+  - project-manager
+conflicts: []
+provides:
+  - system-architecture
+  - api-architecture
+  - data-architecture
+  - integration-architecture
+  - architecture-decisions

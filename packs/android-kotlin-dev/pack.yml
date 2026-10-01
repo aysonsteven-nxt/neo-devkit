@@ -1,15 +1,13 @@
 id: android-kotlin-dev
-name: Android Kotlin Dev
+name: Android Kotlin Development
 version: 1.0.0
-description: Android application development using Kotlin, Gradle and modern Android architecture.
-
-provides:
-  agents:
-    - android-developer\n    - code-reviewer\n  skills:
-    - android-development\n    - code-review\n  instructions:
-    - android-standards\n    - kotlin-standards\n    - architecture-standards\n  prompts: []
-
+description: Native Android development using Kotlin, Jetpack, Compose, architecture, testing, and Android tooling.
 dependencies:
-  []\nrecommends:
-  - testing-specialist\nconflicts:
-  - dotnet-dev\n
+  - project-manager
+conflicts: []
+provides:
+  - android
+  - kotlin
+  - jetpack-compose
+  - android-architecture
+  - android-testing

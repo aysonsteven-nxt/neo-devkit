@@ -1,9 +1,9 @@
-schemaVersion: 1
-name: MoneyMap
-type: android
-
+schema: neo.devkit/project@1
+project:
+  id: moneymap
+  name: MoneyMap
 devkit:
-  version: 0.1.0
-
-packs:
-  - android-kotlin-dev
+  version: 0.2.0
+  packs: []
+providers:
+  generated: []

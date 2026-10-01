@@ -1,15 +1,12 @@
 id: java-dev
-name: Java Dev
+name: Java Development
 version: 1.0.0
-description: Java backend development with modern Java and common Spring-oriented conventions.
-
-provides:
-  agents:
-    - java-developer\n    - code-reviewer\n  skills:
-    - java-development\n    - code-review\n  instructions:
-    - java-standards\n    - architecture-standards\n  prompts: []
-
+description: Professional Java development covering Java SE, Spring Boot, APIs, testing, and maintainable application architecture.
 dependencies:
-  []\nrecommends:
-  - testing-specialist\nconflicts:
-  - dotnet-dev\n
+  - project-manager
+conflicts: []
+provides:
+  - java
+  - java-se
+  - spring-boot
+  - java-testing

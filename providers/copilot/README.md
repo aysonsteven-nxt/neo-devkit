@@ -1,5 +1,4 @@
-# Copilot Provider Adapter
+# GitHub Copilot Adapter
 
-This directory is reserved for the provider-specific generator/adapter.
-
-The canonical Neo DevKit definitions remain provider-neutral. Generated artifacts should be reproducible from the canonical pack/project configuration.
+V0.2 generates a `.github/` provider artifact tree containing project instructions and
+agent material derived from installed packs.
