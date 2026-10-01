@@ -1,7 +1,5 @@
 # Neo DevKit
 
-Neo DevKit is a local-first, filesystem-first, Git-friendly, provider-neutral AI software development toolkit.
-
 It provides:
 
 - Project-aware development packs
@@ -12,8 +10,6 @@ It provides:
 - Provider adapters for GitHub Copilot, Gemini/Antigravity, Claude Code, and Cursor
 
 ## V0.1 Philosophy
-
-Neo DevKit itself does not require a server, database, account, hosted registry, or network connection.
 
 The master toolkit can live in a workspace:
 
